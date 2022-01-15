@@ -9,22 +9,6 @@ import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     isLoaded: false,
-  //     loginName: '',
-  //   };
-  // }
-
-  // componentDidUpdate() {
-  //   this.isComponentLoaded();
-  // }
-
-  // isComponentLoaded = () => {
-  //   this.setState({ isLoaded: true });
-  // }
-
   render() {
     return (
       <BrowserRouter>
