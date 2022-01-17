@@ -21,13 +21,6 @@ class MusicCard extends Component {
     this.setState({ isLoaded: false });
     const favorites = await getFavoriteSongs();
     this.setState({ isLoaded: true, favoritesSongs: [...favorites] });
-    const checkbox = document.getElementsByClassName('checkbox');
-    const checkboxArray = [...checkbox];
-    const favoritesCheck = favorites.map((song) => checkboxArray
-      .find((check) => song.trackId === Number(check.id)));
-    favoritesCheck.map((check) => this
-      .setState((prevState) => ({
-        checked: prevState.checked.set(Number(check.id), true) })));
   }
 
   handleChange = async ({ target }) => {
@@ -42,7 +35,7 @@ class MusicCard extends Component {
 
   render() {
     const { musics } = this.props;
-    const { isLoaded, checked } = this.state;
+    const { isLoaded, checked, favoritesSongs } = this.state;
     return (
       <ul>
         {!isLoaded && <Loading />}
@@ -67,7 +60,9 @@ class MusicCard extends Component {
                   name={ music.trackId }
                   className="checkbox"
                   onChange={ this.handleChange }
-                  checked={ checked.get(music.trackId) }
+                  checked={ favoritesSongs
+                    .some((song) => song.trackId === music.trackId)
+                    ? true : checked.get(music.trackId) }
                   data-testid={ `checkbox-music-${music.trackId}` }
                 />
                 Favorita
