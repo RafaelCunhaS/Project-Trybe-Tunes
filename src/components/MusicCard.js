@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from '../pages/Loading';
 
 class MusicCard extends Component {
@@ -8,8 +8,8 @@ class MusicCard extends Component {
     super();
     this.state = {
       isLoaded: true,
-      favoritesSongs: [],
-      checked: new Map(), /* Source: https://medium.com/@wlodarczyk_j/handling-multiple-checkboxes-in-react-js-337863fd284e */
+      favoriteSongs: [],
+      // checked: false, /* Source: https://medium.com/@wlodarczyk_j/handling-multiple-checkboxes-in-react-js-337863fd284e */
     };
   }
 
@@ -20,25 +20,28 @@ class MusicCard extends Component {
   checkFavorites = async () => {
     this.setState({ isLoaded: false });
     const favorites = await getFavoriteSongs();
-    this.setState({ isLoaded: true, favoritesSongs: [...favorites] });
+    this.setState({ isLoaded: true, favoriteSongs: [...favorites] });
   }
 
   handleChange = async ({ target }) => {
     const { musics } = this.props;
-    const song = musics.find((music) => music.trackId === Number(target.id));
+    const { id } = target;
+    const song = musics.find((music) => music.trackId === Number(id));
     this.setState({ isLoaded: false });
-    await addSong(song);
-    this.setState({ isLoaded: true });
-    const { name, checked } = target;
-    this.setState((prevState) => ({ checked: prevState.checked.set(name, !checked) }));
+    if (!target.checked) {
+      await removeSong(song);
+    } else {
+      await addSong(song);
+    }
+    this.checkFavorites();
   }
 
   render() {
     const { musics } = this.props;
-    const { isLoaded, checked, favoritesSongs } = this.state;
+    const { isLoaded, favoriteSongs } = this.state;
+    if (!isLoaded) return <Loading />;
     return (
       <ul>
-        {!isLoaded && <Loading />}
         {musics.map((music) => (
           music.kind === 'song'
           && (
@@ -57,12 +60,8 @@ class MusicCard extends Component {
                 <input
                   type="checkbox"
                   id={ music.trackId }
-                  name={ music.trackId }
-                  className="checkbox"
                   onChange={ this.handleChange }
-                  checked={ favoritesSongs
-                    .some((song) => song.trackId === music.trackId)
-                    ? true : checked.get(music.trackId) }
+                  checked={ favoriteSongs.some((song) => song.trackId === music.trackId) }
                   data-testid={ `checkbox-music-${music.trackId}` }
                 />
                 Favorita
