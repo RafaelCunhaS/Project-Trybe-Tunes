@@ -1,11 +1,51 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import Loading from '../pages/Loading';
 
 class MusicCard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoaded: true,
+      favoritesSongs: [],
+      checked: new Map(), /* Source: https://medium.com/@wlodarczyk_j/handling-multiple-checkboxes-in-react-js-337863fd284e */
+    };
+  }
+
+  componentDidMount() {
+    this.checkFavorites();
+  }
+
+  checkFavorites = async () => {
+    this.setState({ isLoaded: false });
+    const favorites = await getFavoriteSongs();
+    this.setState({ isLoaded: true, favoritesSongs: [...favorites] });
+    const checkbox = document.getElementsByClassName('checkbox');
+    const checkboxArray = [...checkbox];
+    const favoritesCheck = favorites.map((song) => checkboxArray
+      .find((check) => song.trackId === Number(check.id)));
+    favoritesCheck.map((check) => this
+      .setState((prevState) => ({
+        checked: prevState.checked.set(Number(check.id), true) })));
+  }
+
+  handleChange = async ({ target }) => {
+    const { musics } = this.props;
+    const song = musics.find((music) => music.trackId === Number(target.id));
+    this.setState({ isLoaded: false });
+    await addSong(song);
+    this.setState({ isLoaded: true });
+    const { name, checked } = target;
+    this.setState((prevState) => ({ checked: prevState.checked.set(name, !checked) }));
+  }
+
   render() {
     const { musics } = this.props;
+    const { isLoaded, checked } = this.state;
     return (
       <ul>
+        {!isLoaded && <Loading />}
         {musics.map((music) => (
           music.kind === 'song'
           && (
@@ -20,6 +60,18 @@ class MusicCard extends Component {
                 O seu navegador não suporta o elemento
                 <code>audio</code>
               </audio>
+              <label htmlFor={ music.trackId }>
+                <input
+                  type="checkbox"
+                  id={ music.trackId }
+                  name={ music.trackId }
+                  className="checkbox"
+                  onChange={ this.handleChange }
+                  checked={ checked.get(music.trackId) }
+                  data-testid={ `checkbox-music-${music.trackId}` }
+                />
+                Favorita
+              </label>
             </li>)
         ))}
       </ul>
