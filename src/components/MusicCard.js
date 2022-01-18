@@ -9,7 +9,6 @@ class MusicCard extends Component {
     this.state = {
       isLoaded: true,
       favoriteSongs: [],
-      // checked: false, /* Source: https://medium.com/@wlodarczyk_j/handling-multiple-checkboxes-in-react-js-337863fd284e */
     };
   }
 
@@ -24,12 +23,13 @@ class MusicCard extends Component {
   }
 
   handleChange = async ({ target }) => {
-    const { musics } = this.props;
+    const { musics, showFavorites } = this.props;
     const { id } = target;
     const song = musics.find((music) => music.trackId === Number(id));
     this.setState({ isLoaded: false });
     if (!target.checked) {
       await removeSong(song);
+      showFavorites();
     } else {
       await addSong(song);
     }
@@ -46,7 +46,7 @@ class MusicCard extends Component {
           music.kind === 'song'
           && (
             <li key={ music.trackName }>
-              {music.trackName}
+              <p>{music.trackName}</p>
               <audio
                 data-testid="audio-component"
                 src={ music.previewUrl }
@@ -75,6 +75,7 @@ class MusicCard extends Component {
 
 MusicCard.propTypes = {
   musics: propTypes.arrayOf(propTypes.any).isRequired,
+  showFavorites: propTypes.func.isRequired,
 };
 
 export default MusicCard;
