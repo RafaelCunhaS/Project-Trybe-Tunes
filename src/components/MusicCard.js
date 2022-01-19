@@ -75,7 +75,11 @@ class MusicCard extends Component {
 
 MusicCard.propTypes = {
   musics: propTypes.arrayOf(propTypes.any).isRequired,
-  showFavorites: propTypes.func.isRequired,
+  showFavorites: propTypes.func,
+};
+
+MusicCard.defaultProps = {
+  showFavorites: () => {},
 };
 
 export default MusicCard;

@@ -20,8 +20,7 @@ class Favorites extends Component {
   showFavorites = async () => {
     this.setState({ isLoaded: false });
     const favoriteSongs = await getFavoriteSongs();
-    this.setState({ favoriteSongs }, () => this.setState({ isLoaded: true }));
-    console.log(favoriteSongs);
+    this.setState({ favoriteSongs, isLoaded: true });
   }
 
   render() {
