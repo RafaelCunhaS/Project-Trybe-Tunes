@@ -43,7 +43,7 @@ class MusicCard extends Component {
     return (
       <ul>
         {musics.map((music) => (
-          music.kind === 'song'
+          music.previewUrl
           && (
             <li key={ music.trackName }>
               <p>{music.trackName}</p>
