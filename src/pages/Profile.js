@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
+import './Profile.css';
 
 class Profile extends Component {
   constructor() {
@@ -29,15 +32,18 @@ class Profile extends Component {
       <div data-testid="page-profile">
         <Header />
         { !isLoaded ? <Loading /> : (
-          <section>
-            <img src={ user.image } alt={ user.name } data-testid="profile-image" />
-            <h3>NOME</h3>
-            <p>{ user.name }</p>
-            <h3>E-MAIL</h3>
-            <p>{ user.email }</p>
-            <h3>Descrição</h3>
-            <p>{ user.description }</p>
-            <Link to="/profile/edit">Editar perfil</Link>
+          <section className="profile-page">
+            <div id="link-container">
+              { user.image ? <img id="user-image" src={ user.image } alt="User" />
+                : <FontAwesomeIcon className="big-icon" icon={ faUser } size="4x" />}
+              <Link id="pofile-link" to="/profile/edit">Editar perfil</Link>
+            </div>
+            <p className="profile-tag">Nome</p>
+            <p className="profile-info">{ user.name }</p>
+            <p className="profile-tag">E-mail</p>
+            <p className="profile-info">{ user.email }</p>
+            <p className="profile-tag">Descrição</p>
+            <p className="profile-info">{ user.description }</p>
           </section>
         )}
       </div>

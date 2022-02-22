@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from './Loading';
+import './ProfileEdit.css';
 
 class ProfileEdit extends Component {
   constructor() {
@@ -30,9 +33,9 @@ class ProfileEdit extends Component {
   };
 
   validateButton = () => {
-    const { name, email, image, description } = this.state;
+    const { name, email, description } = this.state;
     const validEmail = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]+)[^0-9]$/i);
-    if (name && email && image && description && validEmail) {
+    if (name && email && description && validEmail) {
       this.setState({ isButtonDisabled: false });
     } else this.setState({ isButtonDisabled: true });
   }
@@ -69,50 +72,58 @@ class ProfileEdit extends Component {
         {!isLoaded ? (
           <Loading />
         ) : (
-          <form>
-            <label htmlFor="name">
+          <form className="form-container">
+            <div className="user-image">
+              { image ? <img id="user-image" src={ image } alt="User" />
+                : <FontAwesomeIcon className="big-icon" icon={ faUser } size="4x" />}
+              <input
+                type="text"
+                id="image"
+                name="image"
+                placeholder="Insira um link para imagem"
+                value={ image }
+                onChange={ this.handleChange }
+                data-testid="edit-input-image"
+              />
+            </div>
+            <label className="form-column" htmlFor="name">
               Nome
               <input
                 type="text"
                 id="name"
+                placeholder="Nome social"
+                className="form-column"
                 name="name"
                 value={ name }
                 onChange={ this.handleChange }
                 data-testid="edit-input-name"
               />
             </label>
-            <label htmlFor="email">
+            <label className="form-column" htmlFor="email">
               E-mail
               <input
                 type="text"
                 id="email"
                 name="email"
+                className="form-column"
                 value={ email }
                 onChange={ this.handleChange }
                 placeholder="usuario@exemplo.com"
                 data-testid="edit-input-email"
               />
             </label>
-            <label htmlFor="description">
+            <label className="form-column" htmlFor="description">
               Descrição
               <textarea
                 type="text"
                 id="description"
+                placeholder="Sobre mim"
+                rows="7"
+                className="form-column"
                 value={ description }
                 onChange={ this.handleChange }
                 name="description"
                 data-testid="edit-input-description"
-              />
-            </label>
-            <label htmlFor="image">
-              Alterar Imagem
-              <input
-                type="text"
-                id="image"
-                name="image"
-                value={ image }
-                onChange={ this.handleChange }
-                data-testid="edit-input-image"
               />
             </label>
             <button

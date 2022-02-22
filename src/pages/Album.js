@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import './Album.css';
 
 class Album extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class Album extends Component {
     this.state = {
       artistName: '',
       albumName: '',
+      albumArtwork: '',
       musics: [],
     };
   }
@@ -24,17 +26,21 @@ class Album extends Component {
     this.setState({
       artistName: album[0].artistName,
       albumName: album[0].collectionName,
+      albumArtwork: album[0].artworkUrl100,
       musics: [...album] });
   }
 
   render() {
-    const { artistName, albumName, musics } = this.state;
+    const { artistName, albumName, musics, albumArtwork } = this.state;
     return (
       <div data-testid="page-album">
         <Header />
-        <h2 data-testid="album-name">{albumName}</h2>
-        <h4 data-testid="artist-name">{artistName}</h4>
-        <MusicCard musics={ musics } />
+        <div className="album-info">
+          <img src={ albumArtwork.replace('100x100', '300x300') } alt={ albumName } />
+          <h2 data-testid="album-name">{albumName}</h2>
+          <h4 data-testid="artist-name">{artistName}</h4>
+        </div>
+        <div className="album-tracks"><MusicCard musics={ musics } /></div>
       </div>
     );
   }

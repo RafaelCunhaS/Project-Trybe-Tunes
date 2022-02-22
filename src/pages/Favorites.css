@@ -1,0 +1,19 @@
+#favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+#favorites-text {
+  color: #023031;
+  font-size: 1.4rem;
+  margin: 5rem 0 0 12rem;
+}
+
+#no-favorites {
+  color: #023031;
+  font-size: 1.7rem;
+  text-align: center;
+  margin-top: 12rem;
+}

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { getUser } from '../services/userAPI';
-import Loading from '../pages/Loading';
+import './Header.css';
+import logoWhite from '../logoWhite.png';
 
 class Header extends Component {
   constructor() {
@@ -24,14 +27,43 @@ class Header extends Component {
 
   render() {
     const { isLoaded, user } = this.state;
-    if (!isLoaded) return <Loading />;
+    if (!isLoaded) return <p id="loading">Carregando...</p>;
     return (
       <div>
         <header data-testid="header-component">
-          <p data-testid="header-user-name">{user}</p>
-          <Link to="/search" data-testid="link-to-search">Pesquisa</Link>
-          <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
-          <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
+          <div className="header1">
+            <img className="logo-header" src={ logoWhite } alt="Logo" />
+            <div className="user">
+              <FontAwesomeIcon className="user-icon" icon={ faUser } size="lg" />
+              <p data-testid="header-user-name">{user}</p>
+            </div>
+          </div>
+          <nav className="header2">
+            <NavLink
+              className="head"
+              to="/search"
+              data-testid="link-to-search"
+              activeStyle={ { backgroundColor: '#036B52', color: '#FFF' } }
+            >
+              Pesquisa
+            </NavLink>
+            <NavLink
+              className="head"
+              to="/favorites"
+              data-testid="link-to-favorites"
+              activeStyle={ { backgroundColor: '#036B52', color: '#FFF' } }
+            >
+              Favoritos
+            </NavLink>
+            <NavLink
+              className="profile head"
+              to="/profile"
+              data-testid="link-to-profile"
+              activeStyle={ { backgroundColor: '#036B52', color: '#FFF' } }
+            >
+              Perfil
+            </NavLink>
+          </nav>
         </header>
       </div>
     );

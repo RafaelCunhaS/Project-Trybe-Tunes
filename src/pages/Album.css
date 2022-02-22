@@ -1,0 +1,23 @@
+.album-info {
+  float: left;
+  margin: 15% 0 0 15%;
+  color: #023031;
+  text-align: center;
+  max-width: 350px;
+}
+
+.album-info img {
+  border-radius: 5%;
+}
+
+.album-info h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.album-tracks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5% 12% 0 0;
+}

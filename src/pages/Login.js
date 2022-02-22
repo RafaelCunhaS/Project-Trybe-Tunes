@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Loading from './Loading';
 import { createUser } from '../services/userAPI';
+import './Login.css';
+import logo from '../logo.png';
 
 const MIN_NAME_LENGTH = 3;
 
@@ -42,25 +44,28 @@ export default class Login extends Component {
       return <Redirect to="/search" />;
     }
     return (
-      <div data-testid="page-login">
-        <label htmlFor="loginName">
-          Login:
+      <div className="login-page" data-testid="page-login">
+        <img className="login-logo" src={ logo } alt="Logo" />
+        <div id="rectangle">
           <input
+            id="login-input"
             type="text"
             name="loginName"
             value={ loginName }
             onChange={ this.handleChange }
+            placeholder="Nome"
             data-testid="login-name-input"
           />
-        </label>
-        <button
-          type="button"
-          data-testid="login-submit-button"
-          onClick={ this.loginButton }
-          disabled={ enableButton }
-        >
-          Entrar
-        </button>
+          <button
+            id="login-btn"
+            type="button"
+            data-testid="login-submit-button"
+            onClick={ this.loginButton }
+            disabled={ enableButton }
+          >
+            Entrar
+          </button>
+        </div>
       </div>
     );
   }
