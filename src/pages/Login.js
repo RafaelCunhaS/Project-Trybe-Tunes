@@ -53,7 +53,7 @@ export default class Login extends Component {
             name="loginName"
             value={ loginName }
             onChange={ this.handleChange }
-            placeholder="Nome"
+            placeholder=" &#xF007;  Name"
             data-testid="login-name-input"
           />
           <button
@@ -63,7 +63,7 @@ export default class Login extends Component {
             onClick={ this.loginButton }
             disabled={ enableButton }
           >
-            Entrar
+            Enter
           </button>
         </div>
       </div>

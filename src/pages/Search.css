@@ -10,16 +10,7 @@
   width: 12rem;
   padding: 0.4rem;
   margin-right: 1rem;
-}
-
-.icon {
-  position: relative;
-  left: -23%;
-  opacity: 0.4;
-}
-
-.icon-label:hover span {
-  display: none;
+  font-family: FontAwesome, Arial, Helvetica, sans-serif;
 }
 
 .search-inputs button {
@@ -95,26 +86,10 @@
   .search-inputs input {
     width: 20rem;
   }
-
-  .icon {
-    left: -13%;
-  }
-
-  .icon-label:hover span {
-    display: inline;
-  }
 }
 
 @media only screen and (min-width: 1200px) {
   .search-inputs input {
     width: 27rem;
-  }
-
-  .icon {
-    left: -10%;
-  }
-
-  .icon-label:hover span {
-    display: inline;
   }
 }

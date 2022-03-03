@@ -27,7 +27,7 @@ class Header extends Component {
 
   render() {
     const { isLoaded, user } = this.state;
-    if (!isLoaded) return <p id="loading">Carregando...</p>;
+    if (!isLoaded) return <p id="loading">Loading...</p>;
     return (
       <div>
         <header data-testid="header-component">
@@ -45,7 +45,7 @@ class Header extends Component {
               data-testid="link-to-search"
               activeStyle={ { backgroundColor: '#036B52', color: '#FFF' } }
             >
-              Pesquisa
+              Search
             </NavLink>
             <NavLink
               className="head"
@@ -53,7 +53,7 @@ class Header extends Component {
               data-testid="link-to-favorites"
               activeStyle={ { backgroundColor: '#036B52', color: '#FFF' } }
             >
-              Favoritos
+              Favorites
             </NavLink>
             <NavLink
               className="profile head"
@@ -61,7 +61,7 @@ class Header extends Component {
               data-testid="link-to-profile"
               activeStyle={ { backgroundColor: '#036B52', color: '#FFF' } }
             >
-              Perfil
+              Profile
             </NavLink>
           </nav>
         </header>

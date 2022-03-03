@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from './Loading';
@@ -50,31 +48,28 @@ class Search extends Component {
       <section className="search-page">
         <Header />
         <div className="search-inputs">
-          <label htmlFor="searchInput" className="icon-label">
-            <input
-              type="text"
-              id="searchInput"
-              name="searchInput"
-              className="icon-placeholder"
-              value={ searchInput }
-              onChange={ this.handleChange }
-              onKeyDown={ this.getKey }
-              placeholder="Nome do Artista "
-            />
-            <span><FontAwesomeIcon className="icon" icon={ faSearch } /></span>
-          </label>
+          <input
+            type="text"
+            id="searchInput"
+            name="searchInput"
+            className="icon-placeholder"
+            value={ searchInput }
+            onChange={ this.handleChange }
+            onKeyDown={ this.getKey }
+            placeholder=" &#xF002;   Artist/Band name"
+          />
           <button
             type="button"
             data-testid="search-artist-button"
             disabled={ enableButton }
             onClick={ this.handleButton }
           >
-            Pesquisar
+            Search
           </button>
         </div>
-        {albumsArray.length === 0 ? <p id="p1">Nenhum álbum foi encontrado</p> : (
+        {albumsArray.length === 0 ? <p id="p1">No albums found</p> : (
           <p id="p2">
-            Resultado de álbuns de
+            Albums found of
             {` ${artist}`}
             :
           </p>)}
