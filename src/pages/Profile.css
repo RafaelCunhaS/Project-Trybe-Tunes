@@ -3,17 +3,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 100vw;
   height: 100vh;
   text-align: left;
   margin-top: -5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#link-container {
+.link-container {
   display: flex;
-  justify-content: space-between;
-  width: 18vw;
   margin-bottom: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 14rem;
 }
 
 .big-icon {
@@ -24,25 +25,23 @@
 }
 
 .profile-tag {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #3D495C;
   font-weight: 700;
   font-size: 1.1rem;
 }
 
 .profile-tag, .profile-info {
-  width: 18vw;
+  width: 12rem;
 } 
 
 .profile-info {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 400;
   font-size: 0.8rem;
   line-height: 150%;
   margin-bottom: 1rem;
 }
 
-#pofile-link {
+#profile-link {
   max-height: 1.8rem;
   align-self: center;
   padding: 0.3rem 0.6rem;
@@ -54,6 +53,6 @@
   font-size: 0.9rem;
 }
 
-#pofile-link:hover {
+#profile-link:hover {
   background-color: #a5b8f3;
 }

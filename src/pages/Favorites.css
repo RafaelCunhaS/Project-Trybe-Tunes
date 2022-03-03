@@ -1,19 +1,33 @@
-#favorites {
+#favorites-text {
+  display: flex;
+  color: #023031;
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+.favorites {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
 }
 
-#favorites-text {
-  color: #023031;
-  font-size: 1.4rem;
-  margin: 5rem 0 0 12rem;
+.favorites img {
+  margin-bottom: 0.4rem;
 }
 
-#no-favorites {
+.favorites p {
+  align-self: center;
+}
+
+.no-favorites {
   color: #023031;
   font-size: 1.7rem;
   text-align: center;
-  margin-top: 12rem;
+  margin-top: 10rem;
+}
+
+.no-favorites span {
+  margin-left: 0.8rem;
 }
