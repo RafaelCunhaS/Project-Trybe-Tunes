@@ -34,7 +34,7 @@ class Favorites extends Component {
         {!isLoaded ? <Loading />
           : (
             <div>
-              {favoriteSongs.length > 0 && <p id="favorites-text">Músicas favoritas:</p>}
+              {favoriteSongs.length > 0 && <p id="favorites-text">Favorite songs:</p>}
               <section className="favorites">
                 <MusicCard
                   musics={ favoriteSongs }
@@ -45,7 +45,7 @@ class Favorites extends Component {
               {favoriteSongs.length === 0
               && (
                 <p className="no-favorites">
-                  Nenhuma música favoritada ainda
+                  No favorite songs yet
                   <span><FontAwesomeIcon icon={ faMeh } /></span>
                 </p>)}
             </div>)}

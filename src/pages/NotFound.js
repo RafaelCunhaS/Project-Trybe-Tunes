@@ -7,8 +7,8 @@ class NotFound extends Component {
     return (
       <div className="not-found" data-testid="page-not-found">
         <img className="logo" src={ logo } alt="Logo Trybe Tunes" />
-        <p id="ops">Ops!</p>
-        <p id="not-found">A página que você está procurando não foi encontrada.</p>
+        <p id="ops">Oops!</p>
+        <p id="not-found">The page you are looking for has not been found.</p>
       </div>
     );
   }

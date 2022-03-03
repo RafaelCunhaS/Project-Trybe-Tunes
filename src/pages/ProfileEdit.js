@@ -80,18 +80,18 @@ class ProfileEdit extends Component {
                 type="text"
                 id="image"
                 name="image"
-                placeholder="Insira um link para imagem"
+                placeholder="Insert a link for image"
                 value={ image }
                 onChange={ this.handleChange }
                 data-testid="edit-input-image"
               />
             </div>
             <label className="form-column" htmlFor="name">
-              Nome
+              Name
               <input
                 type="text"
                 id="name"
-                placeholder="Nome social"
+                placeholder="Social name"
                 className="form-column"
                 name="name"
                 value={ name }
@@ -108,16 +108,16 @@ class ProfileEdit extends Component {
                 className="form-column"
                 value={ email }
                 onChange={ this.handleChange }
-                placeholder="usuario@exemplo.com"
+                placeholder="user@sample.com"
                 data-testid="edit-input-email"
               />
             </label>
             <label className="form-column" htmlFor="description">
-              Descrição
+              Description
               <textarea
                 type="text"
                 id="description"
-                placeholder="Sobre mim"
+                placeholder="About me"
                 rows="7"
                 className="form-column"
                 value={ description }
@@ -132,7 +132,7 @@ class ProfileEdit extends Component {
               onClick={ this.saveUser }
               data-testid="edit-button-save"
             >
-              Salvar
+              Save
             </button>
           </form>
         )}

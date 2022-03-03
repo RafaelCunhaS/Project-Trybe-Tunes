@@ -36,13 +36,13 @@ class Profile extends Component {
             <div className="link-container">
               { user.image ? <img id="user-image" src={ user.image } alt="User" />
                 : <FontAwesomeIcon className="big-icon" icon={ faUser } size="4x" />}
-              <Link id="profile-link" to="/profile/edit">Editar perfil</Link>
+              <Link id="profile-link" to="/profile/edit">Edit Profile</Link>
             </div>
-            <p className="profile-tag">Nome</p>
+            <p className="profile-tag">Name</p>
             <p className="profile-info">{ user.name }</p>
             <p className="profile-tag">E-mail</p>
             <p className="profile-info">{ user.email }</p>
-            <p className="profile-tag">Descrição</p>
+            <p className="profile-tag">Description</p>
             <p className="profile-info">{ user.description }</p>
           </section>
         )}

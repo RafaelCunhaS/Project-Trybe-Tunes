@@ -26,6 +26,7 @@
   width: 90%;
   padding: .4rem;
   margin-bottom: 1.5rem;
+  font-family: FontAwesome, Arial, Helvetica, sans-serif;
 }
 
 #login-btn {
