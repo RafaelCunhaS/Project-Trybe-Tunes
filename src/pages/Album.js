@@ -33,14 +33,16 @@ class Album extends Component {
   render() {
     const { artistName, albumName, musics, albumArtwork } = this.state;
     return (
-      <div data-testid="page-album">
+      <div>
         <Header />
-        <div className="album-info">
-          <img src={ albumArtwork.replace('100x100', '300x300') } alt={ albumName } />
-          <h2 data-testid="album-name">{albumName}</h2>
-          <h4 data-testid="artist-name">{artistName}</h4>
+        <div className="page-album">
+          <section className="album-info">
+            <img src={ albumArtwork.replace('100x100', '300x300') } alt={ albumName } />
+            <h2 data-testid="album-name">{albumName}</h2>
+            <h4 data-testid="artist-name">{artistName}</h4>
+          </section>
+          <div className="album-tracks"><MusicCard musics={ musics } /></div>
         </div>
-        <div className="album-tracks"><MusicCard musics={ musics } /></div>
       </div>
     );
   }

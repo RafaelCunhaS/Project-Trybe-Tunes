@@ -29,14 +29,14 @@ class Profile extends Component {
   render() {
     const { isLoaded, user } = this.state;
     return (
-      <div data-testid="page-profile">
+      <div>
         <Header />
         { !isLoaded ? <Loading /> : (
           <section className="profile-page">
-            <div id="link-container">
+            <div className="link-container">
               { user.image ? <img id="user-image" src={ user.image } alt="User" />
                 : <FontAwesomeIcon className="big-icon" icon={ faUser } size="4x" />}
-              <Link id="pofile-link" to="/profile/edit">Editar perfil</Link>
+              <Link id="profile-link" to="/profile/edit">Editar perfil</Link>
             </div>
             <p className="profile-tag">Nome</p>
             <p className="profile-info">{ user.name }</p>

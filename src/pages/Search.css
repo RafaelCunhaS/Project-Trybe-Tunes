@@ -7,15 +7,19 @@
 
 .search-inputs input {
   height: 2.1rem;
-  width: 25rem;
-  padding: .4rem;
+  width: 12rem;
+  padding: 0.4rem;
   margin-right: 1rem;
 }
 
-#search-icon {
+.icon {
   position: relative;
-  left: 24.3rem;
-  opacity: 0.8;
+  left: -23%;
+  opacity: 0.4;
+}
+
+.icon-label:hover span {
+  display: none;
 }
 
 .search-inputs button {
@@ -87,3 +91,30 @@
   transition: 0.2s;
 }
 
+@media only screen and (min-width: 768px) {
+  .search-inputs input {
+    width: 20rem;
+  }
+
+  .icon {
+    left: -13%;
+  }
+
+  .icon-label:hover span {
+    display: inline;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .search-inputs input {
+    width: 27rem;
+  }
+
+  .icon {
+    left: -10%;
+  }
+
+  .icon-label:hover span {
+    display: inline;
+  }
+}

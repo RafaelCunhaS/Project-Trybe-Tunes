@@ -49,39 +49,44 @@ class MusicCard extends Component {
         {musics.map((music) => (
           music.previewUrl
             && (
-              <li className="tracks" key={ music.trackName }>
-                {showImage && (
-                  <img
-                    src={ music.artworkUrl100.replace('100x100', '60x60') }
-                    alt={ music.trackId }
-                  />)}
-                <p>{music.trackName}</p>
-                <audio
-                  data-testid="audio-component"
-                  src={ music.previewUrl }
-                  controls
-                >
-                  <track kind="captions" />
-                  O seu navegador não suporta o elemento
-                  <code>audio</code>
-                </audio>
-                <label className="hearts" htmlFor={ music.trackId }>
-                  <input
-                    className="heart-check"
-                    type="checkbox"
-                    id={ music.trackId }
-                    onChange={ this.handleChange }
-                    checked={ favoriteSongs.some((song) => song.trackId
-                      === music.trackId) }
-                    data-testid={ `checkbox-music-${music.trackId}` }
-                  />
-                  {favoriteSongs.some((song) => song.trackId === music.trackId) ? (
-                    <FontAwesomeIcon
-                      id="heart-red"
-                      icon={ heart }
-                    />) : <FontAwesomeIcon icon={ faHeart } />}
-                </label>
-              </li>)
+              <div>
+                <li className="tracks" key={ music.trackName }>
+                  {showImage && (
+                    <img
+                      src={ music.artworkUrl100.replace('100x100', '60x60') }
+                      alt={ music.trackId }
+                    />)}
+                  <p>{music.trackName}</p>
+                  <div className="audio-check">
+                    <audio
+                      className="audio-component"
+                      src={ music.previewUrl }
+                      controls
+                    >
+                      <track kind="captions" />
+                      O seu navegador não suporta o elemento
+                      <code>audio</code>
+                    </audio>
+                    <label className="hearts" htmlFor={ music.trackId }>
+                      <input
+                        className="heart-check"
+                        type="checkbox"
+                        id={ music.trackId }
+                        onChange={ this.handleChange }
+                        checked={ favoriteSongs.some((song) => song.trackId
+                          === music.trackId) }
+                        data-testid={ `checkbox-music-${music.trackId}` }
+                      />
+                      {favoriteSongs.some((song) => song.trackId === music.trackId) ? (
+                        <FontAwesomeIcon
+                          id="heart-red"
+                          icon={ heart }
+                        />) : <FontAwesomeIcon icon={ faHeart } />}
+                    </label>
+                  </div>
+                </li>
+                <hr />
+              </div>)
         ))}
       </ul>
     );

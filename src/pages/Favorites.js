@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMeh } from '@fortawesome/free-regular-svg-icons';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
@@ -33,7 +35,7 @@ class Favorites extends Component {
           : (
             <div>
               {favoriteSongs.length > 0 && <p id="favorites-text">Músicas favoritas:</p>}
-              <section id="favorites">
+              <section className="favorites">
                 <MusicCard
                   musics={ favoriteSongs }
                   showFavorites={ this.showFavorites }
@@ -41,7 +43,11 @@ class Favorites extends Component {
                 />
               </section>
               {favoriteSongs.length === 0
-              && <p id="no-favorites">Nenhuma música favoritada ainda :/</p>}
+              && (
+                <p className="no-favorites">
+                  Nenhuma música favoritada ainda
+                  <span><FontAwesomeIcon icon={ faMeh } /></span>
+                </p>)}
             </div>)}
       </div>
     );

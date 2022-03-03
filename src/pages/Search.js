@@ -28,6 +28,10 @@ class Search extends Component {
     else this.setState({ enableButton: true });
   };
 
+  getKey = (event) => {
+    if (event.key === 'Enter' && event.target.value.length >= 2) this.handleButton();
+  }
+
   handleButton = async () => {
     const { searchInput } = this.state;
     this.setState({ isLoaded: false });
@@ -43,18 +47,22 @@ class Search extends Component {
   render() {
     const { searchInput, enableButton, isLoaded, artist, albumsArray } = this.state;
     return (
-      <section className="search-page" data-testid="page-search">
+      <section className="search-page">
         <Header />
         <div className="search-inputs">
-          <FontAwesomeIcon id="search-icon" icon={ faSearch } />
-          <input
-            data-testid="search-artist-input"
-            type="text"
-            name="searchInput"
-            value={ searchInput }
-            onChange={ this.handleChange }
-            placeholder="Nome do Artista"
-          />
+          <label htmlFor="searchInput" className="icon-label">
+            <input
+              type="text"
+              id="searchInput"
+              name="searchInput"
+              className="icon-placeholder"
+              value={ searchInput }
+              onChange={ this.handleChange }
+              onKeyDown={ this.getKey }
+              placeholder="Nome do Artista "
+            />
+            <span><FontAwesomeIcon className="icon" icon={ faSearch } /></span>
+          </label>
           <button
             type="button"
             data-testid="search-artist-button"
