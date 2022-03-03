@@ -1,4 +1,4 @@
-### Trybe Tunes
+# Trybe Tunes
 
 Front-end project developed while studying at Trybe, a web development school.
 
