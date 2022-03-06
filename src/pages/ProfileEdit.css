@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  margin-top: -2rem;
 }
 
 .user-image {
@@ -65,4 +64,10 @@
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+
+@media only screen and (min-height: 600px) {
+  .form-container {
+    margin-top: -2rem;
+  }
 }
